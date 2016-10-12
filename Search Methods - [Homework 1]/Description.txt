@@ -1,0 +1,9 @@
+- Depth first:
+In order to obtain depth first algorithm instead breath first one we have changend appendleft() to append()
+to take last processed node
+- A* (h1)
+We have defined in class "Solver" the method "sortByCost" that sort by cost the queue
+and the method called "setCost" in class "Node" that compute the number of tiles out of place.
+The methods are used in method "solve" from the class "Solver"
+- A* (h2) 
+In the h2 we only changed the method "setCost" in class "Node" to compute the Manhattan distance
