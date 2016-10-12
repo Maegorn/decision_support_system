@@ -7,6 +7,7 @@
   (:types block)
   (:predicates (on ?x - block ?y - block)
 	       (ontable ?x - block)
+	       (onconveyor ?x - block)
 	       (clear ?x - block)
 	       (handempty)
 	       (holding ?x - block)
@@ -19,6 +20,7 @@
 	     (and (not (ontable ?x))
 		   (not (clear ?x))
 		   (not (handempty))
+		   (not (onconveyor ?x))
 		   (holding ?x)))
 
   (:action put-down
@@ -29,6 +31,14 @@
 		   (clear ?x)
 		   (handempty)
 		   (ontable ?x)))
+  (:action put-conveyor
+	     :parameters (?x - block)
+	     :precondition (holding ?x)
+	     :effect
+	     (and (not (holding ?x))
+		   (not (clear ?x))
+		   (handempty)
+		   (onconveyor ?x)))
   (:action stack
 	     :parameters (?x - block ?y - block)
 	     :precondition (and (holding ?x) (clear ?y))
